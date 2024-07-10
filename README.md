@@ -4,9 +4,15 @@ Use this repository as a template for your Ruby CLI (command line interface) pro
 
 - Ruby version: `3.2.1`
 
+Files & Folders:
+  - app.rb use (ruby app.rb) to run the program
+  - bank.rb contains the bank class
+  - bankaccount.rb contains the bank-account class
+  - tests contains mini-tests
+
+Description: 
 This Bank command line interface app, allows instance(s) of a bank to be created, and 
 be populated with instances of bank accounts. 
-
 
 Bank - A financial institution object, with attributes: 
   - bank_name (String which stores the name of the financial institution)

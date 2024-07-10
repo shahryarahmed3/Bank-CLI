@@ -22,6 +22,10 @@ class BankAccount < Bank
     return self.account_number
   end
 
+  def get_pin
+    return self.pin
+  end
+
   def deposit (amount)
     self.balance = self.balance + amount;
   end
@@ -30,11 +34,4 @@ class BankAccount < Bank
     self.balance = self.balance - amount;
   end
 
-  def get_pin
-    return self.pin
-  end
-
-  def authenticate_user (pin)
-    return self.pin == pin
-  end
 end
