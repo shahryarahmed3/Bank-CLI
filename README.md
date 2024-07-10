@@ -18,7 +18,7 @@ Bank - A financial institution object, with attributes:
   - bank_name (String which stores the name of the financial institution)
   - num_accts (Integer which stores the number of accts at a single institute,
               useful for generating unique new bank account numbers)
-  - accounts (Hash data structure which stores => account : bank account object)
+  - accounts (Hash data structure which stores => account number : bank account object)
   
 Bank Account - A user financial services account object, with attributes:
   - account_holder (String which stores the full name of the account holder)
