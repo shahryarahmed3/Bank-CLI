@@ -1,17 +1,23 @@
 class Bank
   attr_accessor :num_accts, :bank_name
   def initialize ()
-    self.num_accts = get_new_acct_num
     @bank_name = "ABC Bank"
+    @num_accts = 1000
     @accounts = {}
   end
-
-  def get_new_acct_num =(value)
-    return self.num_accts + 1
+  def get_acct(account_number)
+    return @accounts[account_number]
   end
-
+  def get_acct_num
+    @num_accts += 1
+    return self.num_accts
+  end
   def register_new_acct(account_number, bank_acct)
     @accounts[account_number] = bank_acct
+  end
+  def find_acct (account_number)
+    acct = self.get_acct(account_number)
+    return acct
   end
 end
 
@@ -21,7 +27,7 @@ class BankAccount < Bank
 
   def initialize (account_holder, initial_balance, bank)
     @account_holder = account_holder
-    @account_number = bank.get_new_acct_num
+    @account_number = bank.get_acct_num
     @balance = initial_balance
   end
 
@@ -40,6 +46,7 @@ class BankAccount < Bank
   def deposit (account_number, amount)
     self.balance = self.balance + amount;
   end
+
   def withdraw (account_number, amount)
     self.balance = self.balance - amount;
   end
@@ -73,14 +80,14 @@ while true
 
       name = "#{first_name} #{last_name}"
       my_acct = BankAccount.new(name, initial_dep, bank1)
+      bank1.register_new_acct(my_acct.get_account_number, my_acct)
  
     
       puts "\nHere's a summary of your new account credentials..."
       puts "\n  Account Holder: #{my_acct.get_account_holder_name}"
-      puts "  Account Number: #{my_acct.get_new_acct_num}"
+      puts "  Account Number: #{my_acct.get_account_number}"
       puts "  Initial Deposit: $#{my_acct.get_balance}"
       puts "\n================== End of Transaction ===================="
-      bank1.register_new_acct(my_acct.get_account_number, my_acct)
 
     when "2", "deposit"
       puts "\n====================== ABC Bank ========================"
@@ -90,9 +97,10 @@ while true
       print "\n  How much would you like to deposit? "
         deposit_amt = gets.chomp.to_i
 
+      my_acct = bank1.find_acct(account_num)
       my_acct.deposit(account_num, deposit_amt)
 
-      puts "\nHere's a summary of your new account credentials..."
+      puts "\nHere's a summary of your deposit transaction..."
       puts "\n  Account Holder: #{my_acct.get_account_holder_name}"
       puts "  Account Number: #{my_acct.get_account_number}"
       puts "  Deposit Amount: #{deposit_amt}"
@@ -108,16 +116,18 @@ while true
         withdraw_amt = gets.chomp.to_i
       print "\n  4-digit Pin: "
         pin = gets.chomp.to_i
-      
+
+      my_acct = bank1.find_acct(account_num)
       my_acct.withdraw(account_num, withdraw_amt)
 
-      puts "\nHere's a summary of your new account credentials..."
+      puts "\nHere's a summary of your withdrawl transaction..."
       puts "\n  Account Holder: #{my_acct.get_account_holder_name}"
       puts "  Account Number: #{my_acct.get_account_number}"
       puts "  Withdraw Amount: #{withdraw_amt}"
       puts "  Account Balance: $#{my_acct.get_balance}"
       puts "\n================== End of Transaction ===================="
       break
+
     when "4", "balance"
       puts "\n====================== ABC Bank ========================"
       puts "\nFor the account balance, please provide the following..."
@@ -125,8 +135,10 @@ while true
         account_num = gets.chomp.to_i
       print "\n  4-digit Pin: "
         pin = gets.chomp.to_i
+      
+      my_acct = bank1.find_acct(account_num)
 
-      puts "\nHere's a summary of your new account credentials..."
+      puts "\nYour account balance is..."
       puts "\n  Account Holder: #{my_acct.get_account_holder_name}"
       puts "  Account Number: #{my_acct.get_account_number}"
       puts "  Account Balance: $#{my_acct.get_balance}"
