@@ -126,8 +126,7 @@ while true
       puts "  Withdraw Amount: #{withdraw_amt}"
       puts "  Account Balance: $#{my_acct.get_balance}"
       puts "\n================== End of Transaction ===================="
-      break
-
+      
     when "4", "balance"
       puts "\n====================== ABC Bank ========================"
       puts "\nFor the account balance, please provide the following..."
