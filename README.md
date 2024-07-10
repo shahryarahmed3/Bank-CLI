@@ -24,7 +24,7 @@ Bank Account - A user financial services account object, with attributes:
   - account_holder (String which stores the full name of the account holder)
   - account_number (Integer which stores an account number)
   - balance (Integer which stores the balance information)
-  - pin (Integer which stores a 4-digit pin for user authentication)
+  - pin (String which stores a 4-digit pin for user authentication)
 
 
 [Menu Screen] - User has option to navigate the different services offered at "ABC Bank".
