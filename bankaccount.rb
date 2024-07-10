@@ -43,11 +43,11 @@ class BankAccount < Bank
     return self.account_number
   end
 
-  def deposit (account_number, amount)
+  def deposit (amount)
     self.balance = self.balance + amount;
   end
 
-  def withdraw (account_number, amount)
+  def withdraw (amount)
     self.balance = self.balance - amount;
   end
 end
@@ -98,7 +98,7 @@ while true
         deposit_amt = gets.chomp.to_i
 
       my_acct = bank1.find_acct(account_num)
-      my_acct.deposit(account_num, deposit_amt)
+      my_acct.deposit(deposit_amt)
 
       puts "\nHere's a summary of your deposit transaction..."
       puts "\n  Account Holder: #{my_acct.get_account_holder_name}"
@@ -118,7 +118,7 @@ while true
         pin = gets.chomp.to_i
 
       my_acct = bank1.find_acct(account_num)
-      my_acct.withdraw(account_num, withdraw_amt)
+      my_acct.withdraw(withdraw_amt)
 
       puts "\nHere's a summary of your withdrawl transaction..."
       puts "\n  Account Holder: #{my_acct.get_account_holder_name}"
