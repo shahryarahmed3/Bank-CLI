@@ -177,9 +177,9 @@ while true
         puts "\n   ================== -[ End of Transaction ]- ===================="
       end
     when "5", "exit"
-      puts "Thank you for choosing ABC Bank"
+      puts "\nThank you for choosing ABC Bank!"
       break
     else
-      puts "Invalid choice... Please try again"
+      puts "\nInvalid choice... Please try again"
   end
 end
